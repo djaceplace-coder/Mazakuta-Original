@@ -2,13 +2,14 @@ import { ReactNode, useState } from 'react';
 
 interface ProductCardProps {
   title: string;
-  imageName: string;
+  imageName?: string;
+  imageUrl?: string;
   children: ReactNode;
   orderMessage: string;
   ctaSubtext: string;
 }
 
-function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: ProductCardProps) {
+function ProductCard({ title, imageName, imageUrl, children, orderMessage, ctaSubtext }: ProductCardProps) {
   const shortName = title.includes(':') ? title.split(':')[1].trim() : title;
   
   return (
@@ -16,8 +17,10 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
       <h3 className="font-oswald text-2xl font-bold bg-green-800 text-white p-3 text-center uppercase tracking-wider rounded-t-xl">{title}</h3>
       <div className="border-[5px] border-t-0 border-green-800 p-4 sm:p-5 rounded-b-xl bg-white relative">
         <img 
-          src={`/${imageName}.jpeg`} 
+          src={imageUrl || `/${imageName}.jpeg`} 
           alt={title} 
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto object-cover border-4 border-green-600 shadow-md mb-4 bg-gray-200 min-h-[250px]"
           // Fallback image using placeholder
           onError={(e) => {
@@ -53,30 +56,6 @@ function SectionHeader({ subtitle, title }: { subtitle: string, title: string })
       <h3 className="font-oswald text-[2.5rem] leading-tight font-black uppercase text-gray-900 border-b-4 border-green-700 inline-block pb-1">
         {title}
       </h3>
-    </div>
-  )
-}
-
-function VideoSection({ titlePrefix, titleHighlight, titleSuffix }: { titlePrefix: string, titleHighlight: string, titleSuffix: string }) {
-  return (
-    <div className="my-12 text-center bg-white p-6 shadow-xl border-t-4 border-b-4 border-gray-200 rounded-lg mx-[-1rem]">
-      <h2 className="font-oswald text-4xl mb-4 uppercase font-black text-gray-900 leading-tight">
-        {titlePrefix} <span className="text-red-600">{titleHighlight}</span> {titleSuffix}
-      </h2>
-      
-      <button className="bg-red-600 hover:bg-red-700 text-white font-bold text-xl uppercase tracking-wider py-3 px-8 rounded-full mb-4 shadow-lg animate-pulse">
-        WATCH VIDEO
-      </button>
-      
-      <div className="text-6xl mb-4">👇</div>
-      
-      <div className="border-4 border-red-500 rounded-xl overflow-hidden shadow-2xl relative aspect-video bg-black">
-        <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-90 cursor-pointer shadow-lg hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"/></svg>
-            </div>
-        </div>
-      </div>
     </div>
   )
 }
@@ -148,6 +127,8 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
             <img 
               src={`/${beforeSrc}`} 
               alt="Before" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto rounded border-2 border-red-100 shadow-sm" 
               onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x500/fee2e2/991b1b?text=BEFORE` }} 
             />
@@ -157,6 +138,8 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
             <img 
               src={`/${afterSrc}`} 
               alt="After" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto rounded border-2 border-green-100 shadow-sm" 
               onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x500/dcfce7/166534?text=AFTER` }} 
             />
@@ -174,6 +157,8 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
   );
 }
 
+
+
 export function Phases() {
   return (
     <section className="px-4 py-4 bg-gray-50 border-t-8 border-gray-900">
@@ -181,7 +166,7 @@ export function Phases() {
       
       <ProductCard 
         title="Product 1: The Flusher" 
-        imageName="Flusher Base"
+        imageUrl="/Flusher%20Base.jpeg"
         orderMessage="Hello Maza Kuta, I want to order The Flusher."
         ctaSubtext="*Recommended for complete support*"
       >
@@ -195,7 +180,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 2: Anti-Wank Therapy" 
-        imageName="Anti Wank Therapy Base"
+        imageUrl="/Anti%20wank%20therapy%20Base.jpeg"
         orderMessage="Hello Maza Kuta, I want to order the Anti-Wank Therapy."
         ctaSubtext="*Recommended for mental & physical reset*"
       >
@@ -215,18 +200,12 @@ export function Phases() {
         afterSrc="test1after.jpg" 
         caption="Restored Morning Urges & Cleansed System" 
       />
-      
-      <VideoSection 
-        titlePrefix="How" 
-        titleHighlight="Safe" 
-        titleSuffix="Is This Therapy?" 
-      />
 
       <SectionHeader subtitle="Step 2" title="Phase 2: The Foundation & Endurance" />
 
       <ProductCard 
         title="Product 3: Rock Steady" 
-        imageName="Rock Steady Base"
+        imageUrl="/Rock%20Steady%20Base.jpeg"
         orderMessage="Hello Maza Kuta, I want to order Rock Steady."
         ctaSubtext="*Recommended for reliable erection recovery*"
       >
@@ -240,7 +219,7 @@ export function Phases() {
       
       <ProductCard 
         title="Product 4: Volumizer" 
-        imageName="Volumizer Base"
+        imageUrl="/Volumizer%20Base.jpeg"
         orderMessage="Hello Maza Kuta, I want to order the Volumizer."
         ctaSubtext="*Recommended to increase sperm volume and count*"
       >
@@ -254,7 +233,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 5: Everlast" 
-        imageName="Everlast Base1"
+        imageUrl="/Everlast%20Base1.jpeg"
         orderMessage="Hello Maza Kuta, I want to order Everlast."
         ctaSubtext="*Liquid formula for immediate stamina*"
       >
@@ -268,7 +247,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 6: Extra Hours" 
-        imageName="Extra Hours Base"
+        imageUrl="/Extra%20Hours%20Base.jpeg"
         orderMessage="Hello Maza Kuta, I want to order Extra Hours."
         ctaSubtext="*Powder/Tea to extend the ejaculation threshold*"
       >
@@ -288,17 +267,11 @@ export function Phases() {
 
       <YesNoTrap />
       
-      <VideoSection 
-        titlePrefix="How to" 
-        titleHighlight="use" 
-        titleSuffix="the therapies" 
-      />
-
       <SectionHeader subtitle="Step 3" title="Phase 3: Ultimate Expansion" />
 
       <ProductCard 
         title="Product 7: Enlargement Therapy" 
-        imageName="Enlargement Therapy Base"
+        imageUrl="/Enlargement%20Therapy%20Base.jpeg"
         orderMessage="Hello Maza Kuta, I want to order the Enlargement Therapy."
         ctaSubtext="*Tissue Builder Max + Energy God + Cream*"
       >
@@ -312,7 +285,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 8: The Enlargement Infusion" 
-        imageName="The Enlargement Infusion Base"
+        imageUrl="/EnlargementInfusionBase.jpeg"
         orderMessage="Hello Maza Kuta, I want to order The Enlargement Infusion VIP Package."
         ctaSubtext="*The absolute premium flagship package*"
       >
