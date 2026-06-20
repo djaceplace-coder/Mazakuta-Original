@@ -165,7 +165,7 @@ export function Phases() {
       
       <ProductCard 
         title="Product 1: The Flusher" 
-        imageName="Flusher Base"
+        imageName="Flusher-Base"
         orderMessage="Hello Maza Kuta, I want to order The Flusher."
         ctaSubtext="*Recommended for complete support*"
       >
@@ -179,7 +179,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 2: Anti-Wank Therapy" 
-        imageName="Anti wank therapy Base"
+        imageName="Anti-wank-therapy-Base"
         orderMessage="Hello Maza Kuta, I want to order the Anti-Wank Therapy."
         ctaSubtext="*Recommended for mental & physical reset*"
       >
@@ -204,7 +204,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 3: Rock Steady" 
-        imageName="Rock Steady Base"
+        imageName="Rock-Steady-Base"
         orderMessage="Hello Maza Kuta, I want to order Rock Steady."
         ctaSubtext="*Recommended for reliable erection recovery*"
       >
@@ -218,7 +218,7 @@ export function Phases() {
       
       <ProductCard 
         title="Product 4: Volumizer" 
-        imageName="Volumizer Base"
+        imageName="Volumizer-Base"
         orderMessage="Hello Maza Kuta, I want to order the Volumizer."
         ctaSubtext="*Recommended to increase sperm volume and count*"
       >
@@ -232,7 +232,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 5: Everlast" 
-        imageName="Everlast Base1"
+        imageName="Everlast-Base1"
         orderMessage="Hello Maza Kuta, I want to order Everlast."
         ctaSubtext="*Liquid formula for immediate stamina*"
       >
@@ -246,7 +246,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 6: Extra Hours" 
-        imageName="Extra Hours Base"
+        imageName="Extra-Hours-Base"
         orderMessage="Hello Maza Kuta, I want to order Extra Hours."
         ctaSubtext="*Powder/Tea to extend the ejaculation threshold*"
       >
@@ -270,7 +270,7 @@ export function Phases() {
 
       <ProductCard 
         title="Product 7: Enlargement Therapy" 
-        imageName="Enlargement Therapy Base"
+        imageName="Enlargement-Therapy-Base"
         orderMessage="Hello Maza Kuta, I want to order the Enlargement Therapy."
         ctaSubtext="*Tissue Builder Max + Energy God + Cream*"
       >
