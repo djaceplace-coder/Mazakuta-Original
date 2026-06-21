@@ -4,8 +4,8 @@ import { StickyFooter } from './components/StickyFooter';
 
 export default function App() {
   return (
-    <div className="bg-gray-100 min-h-screen pb-24 font-sans max-w-full">
-      <div className="max-w-lg mx-auto bg-white shadow-2xl relative min-h-screen overflow-hidden ring-1 ring-gray-200">
+    <div className="bg-gray-100 min-h-screen pb-24 font-sans w-full overflow-x-hidden">
+      <div className="w-full mx-auto bg-white shadow-2xl relative min-h-screen ring-1 ring-gray-200 flex flex-col">
         {/* Top Branding Banner */}
         <div className="bg-black py-4 px-6 text-center shadow-md relative z-10 border-b-4 border-green-700">
           <h1 className="font-oswald text-3xl font-black text-white tracking-[0.2em] uppercase">Maza Kuta</h1>
