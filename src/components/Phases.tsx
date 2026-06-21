@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 interface ProductCardProps {
   title: string;
@@ -6,6 +6,79 @@ interface ProductCardProps {
   children: ReactNode;
   orderMessage: string;
   ctaSubtext: string;
+}
+
+function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: string, afterSrc: string, caption: string }) {
+  const [isOver18, setIsOver18] = useState(false);
+
+  return (
+    <div className="my-10 relative mx-auto max-w-4xl mt-16">
+      {/* Testimonial Banner Tab */}
+      <div className="bg-yellow-400 text-gray-900 font-black uppercase px-6 py-3 rounded-t-2xl sm:text-lg lg:text-xl border-4 border-b-0 border-yellow-500 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] inline-flex items-center gap-2 transform translate-y-1 z-10 relative ml-4 sm:ml-8">
+        <svg className="w-6 h-6 text-red-600 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+        REAL TESTIMONIAL
+      </div>
+      
+      {/* Testimonial Box */}
+      <div className="bg-white p-4 sm:p-8 shadow-2xl border-4 border-green-700 rounded-2xl rounded-tl-none sm:rounded-tl-2xl relative z-20">
+      
+      <h4 className="font-oswald text-xl sm:text-2xl uppercase font-black text-center mt-2 sm:mt-4 mb-6 text-gray-900 leading-tight px-2">
+        {caption}
+      </h4>
+      
+      <div className="relative rounded-lg bg-gray-100 p-2 sm:p-4">
+        <div className="flex flex-col gap-4 justify-center transition-all duration-500 w-full relative">
+          <div className="flex flex-row gap-2 sm:gap-4 justify-center w-full">
+            <div className="flex-1 relative w-full">
+              <div className="absolute top-3 left-3 bg-red-600 text-white text-[0.65rem] sm:text-xs font-black uppercase px-2 py-1 flex items-center justify-center rounded shadow-md z-10 border border-red-800">BEFORE</div>
+              <img 
+                src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${beforeSrc}`} 
+                alt="Before" 
+                loading="lazy"
+                decoding="async"
+                className={`w-full h-auto block bg-gray-50 rounded-md border-2 shadow-sm border-red-200 ${!isOver18 ? 'blur-2xl grayscale' : ''}`} 
+                onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x500/fee2e2/991b1b?text=BEFORE` }} 
+              />
+            </div>
+            <div className="flex-1 relative w-full">
+              <div className="absolute top-3 left-3 bg-green-600 text-white text-[0.65rem] sm:text-xs font-black uppercase px-2 py-1 flex items-center justify-center rounded shadow-md z-10 border border-green-800">AFTER</div>
+              <img 
+                src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${afterSrc}`} 
+                alt="After" 
+                loading="lazy"
+                decoding="async"
+                className={`w-full h-auto block bg-gray-50 rounded-md border-2 shadow-sm border-green-200 ${!isOver18 ? 'blur-2xl grayscale' : ''}`} 
+                onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x500/dcfce7/166534?text=AFTER` }} 
+              />
+            </div>
+          </div>
+          
+          {!isOver18 && (
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gray-900/40 backdrop-blur-sm rounded-md p-4">
+              <div className="bg-white p-6 sm:p-8 rounded-xl text-center w-full max-w-sm shadow-2xl border-2 border-red-200">
+                <p className="font-bold text-red-600 mb-3 uppercase text-lg sm:text-xl tracking-wide border-b border-red-100 pb-2">Age Verification</p>
+                <p className="text-gray-700 text-base sm:text-lg mb-6 font-medium leading-relaxed">Explicit content. You must be 18+ to view these customer results.</p>
+                <button 
+                  onClick={() => setIsOver18(true)}
+                  className="bg-red-600 hover:bg-red-700 shadow-md text-white font-bold py-4 px-6 rounded-md uppercase text-base w-full transition-all active:scale-95 cursor-pointer"
+                >
+                  Yes, I am 18+
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="text-center mt-4 bg-green-50 rounded p-2 border border-green-200">
+        <p className="font-bold italic text-sm text-green-900 flex items-center justify-center gap-1">
+           <svg className="w-4 h-4" title="Verified Customer Result" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+           Verified Customer Result
+        </p>
+      </div>
+      </div>
+    </div>
+  );
 }
 
 function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: ProductCardProps) {
@@ -18,7 +91,8 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
         <img 
           src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${imageName}.jpeg`} 
           alt={title} 
-          className="w-full h-auto object-cover border-4 border-green-600 shadow-md mb-4 bg-gray-200 aspect-[4/3] min-h-[200px]"
+          loading="lazy"
+          className="w-full h-auto block border-4 border-green-600 shadow-md mb-4 bg-gray-200"
         />
         <div className="text-gray-800 mb-6 text-[1.1rem] leading-relaxed space-y-4 font-medium px-1 flex-grow">
            {children}
@@ -96,7 +170,7 @@ export function Phases() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <ProductCard 
           title="Product 1: The Flusher" 
-          imageName="Flusher-Base"
+          imageName="Flusher%20Base"
           orderMessage="Hello Maza Kuta, I want to order The Flusher."
           ctaSubtext="*Recommended for complete support*"
         >
@@ -110,7 +184,7 @@ export function Phases() {
 
         <ProductCard 
           title="Product 2: Anti-Wank Therapy" 
-          imageName="Anti-wank-therapy-Base"
+          imageName="Anti%20wank%20therapy%20Base"
           orderMessage="Hello Maza Kuta, I want to order the Anti-Wank Therapy."
           ctaSubtext="*Recommended for mental & physical reset*"
         >
@@ -126,12 +200,18 @@ export function Phases() {
         </ProductCard>
       </div>
 
+      <BeforeAfterTestimonial 
+        beforeSrc="Test1before.jpg" 
+        afterSrc="Test1after.jpg" 
+        caption="Restored Morning Urges & Cleansed System" 
+      />
+
       <SectionHeader subtitle="Step 2" title="Phase 2: The Foundation & Endurance" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <ProductCard 
           title="Product 3: Rock Steady" 
-          imageName="Rock-Steady-Base"
+          imageName="Rock%20Steady%20Base"
           orderMessage="Hello Maza Kuta, I want to order Rock Steady."
           ctaSubtext="*Recommended for reliable erection recovery*"
         >
@@ -145,7 +225,7 @@ export function Phases() {
         
         <ProductCard 
           title="Product 4: Volumizer" 
-          imageName="Volumizer-Base"
+          imageName="Volumizer%20Base"
           orderMessage="Hello Maza Kuta, I want to order the Volumizer."
           ctaSubtext="*Recommended to increase sperm volume and count*"
         >
@@ -159,7 +239,7 @@ export function Phases() {
 
         <ProductCard 
           title="Product 5: Everlast" 
-          imageName="Everlast-Base1"
+          imageName="Everlast%20Base1"
           orderMessage="Hello Maza Kuta, I want to order Everlast."
           ctaSubtext="*Liquid formula for immediate stamina*"
         >
@@ -173,7 +253,7 @@ export function Phases() {
 
         <ProductCard 
           title="Product 6: Extra Hours" 
-          imageName="Extra-Hours-Base"
+          imageName="Extra%20Hours%20Base"
           orderMessage="Hello Maza Kuta, I want to order Extra Hours."
           ctaSubtext="*Powder/Tea to extend the ejaculation threshold*"
         >
@@ -186,6 +266,12 @@ export function Phases() {
         </ProductCard>
       </div>
 
+      <BeforeAfterTestimonial 
+        beforeSrc="Test2before.jpg" 
+        afterSrc="test2bfter.jpg" 
+        caption="Iron Clad Stamina & Performance Recovered" 
+      />
+
       <YesNoTrap />
       
       <SectionHeader subtitle="Step 3" title="Phase 3: Ultimate Expansion" />
@@ -193,7 +279,7 @@ export function Phases() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
         <ProductCard 
           title="Product 7: Enlargement Therapy" 
-          imageName="Enlargement-Therapy-Base"
+          imageName="Enlargement%20Therapy%20Base"
           orderMessage="Hello Maza Kuta, I want to order the Enlargement Therapy."
           ctaSubtext="*Tissue Builder Max + Energy God + Cream*"
         >
@@ -222,6 +308,12 @@ export function Phases() {
           </p>
         </ProductCard>
       </div>
+
+      <BeforeAfterTestimonial 
+        beforeSrc="Test3before.jpg" 
+        afterSrc="Test3after.jpg" 
+        caption="Maximum Size & Girth Expansion" 
+      />
 
     </section>
   );
