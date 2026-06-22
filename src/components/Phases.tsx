@@ -14,15 +14,15 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
   return (
     <div className="my-10 relative mx-auto max-w-4xl mt-16">
       {/* Testimonial Banner Tab */}
-      <div className="bg-yellow-400 text-gray-900 font-black uppercase px-6 py-3 rounded-t-2xl sm:text-lg lg:text-xl border-4 border-b-0 border-yellow-500 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] inline-flex items-center gap-2 transform translate-y-1 z-10 relative ml-4 sm:ml-8">
-        <svg className="w-6 h-6 text-red-600 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+      <div className="bg-yellow-400 text-gray-900 font-black uppercase px-4 sm:px-6 py-2 sm:py-3 rounded-t-xl sm:rounded-t-2xl text-xs sm:text-sm md:text-base border-4 border-b-0 border-yellow-500 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] inline-flex items-center gap-2 transform translate-y-1 z-10 relative ml-4 sm:ml-8">
+        <svg className="w-5 h-5 text-red-600 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
         REAL TESTIMONIAL
       </div>
       
       {/* Testimonial Box */}
       <div className="bg-white p-4 sm:p-8 shadow-2xl border-4 border-green-700 rounded-2xl rounded-tl-none sm:rounded-tl-2xl relative z-20">
       
-      <h4 className="font-oswald text-xl sm:text-2xl uppercase font-black text-center mt-2 sm:mt-4 mb-6 text-gray-900 leading-tight px-2">
+      <h4 className="font-oswald text-lg sm:text-xl uppercase font-black text-center mt-2 sm:mt-4 mb-6 text-gray-900 leading-tight px-2">
         {caption}
       </h4>
       
@@ -56,11 +56,11 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
           {!isOver18 && (
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gray-900/40 backdrop-blur-sm rounded-md p-4">
               <div className="bg-white p-6 sm:p-8 rounded-xl text-center w-full max-w-sm shadow-2xl border-2 border-red-200">
-                <p className="font-bold text-red-600 mb-3 uppercase text-lg sm:text-xl tracking-wide border-b border-red-100 pb-2">Age Verification</p>
-                <p className="text-gray-700 text-base sm:text-lg mb-6 font-medium leading-relaxed">Explicit content. You must be 18+ to view these customer results.</p>
+                <p className="font-bold text-red-600 mb-3 uppercase text-base sm:text-lg tracking-wide border-b border-red-100 pb-2">Age Verification</p>
+                <p className="text-gray-700 text-sm sm:text-base mb-6 font-medium leading-relaxed">Explicit content. You must be 18+ to view these customer results.</p>
                 <button 
                   onClick={() => setIsOver18(true)}
-                  className="bg-red-600 hover:bg-red-700 shadow-md text-white font-bold py-4 px-6 rounded-md uppercase text-base w-full transition-all active:scale-95 cursor-pointer"
+                  className="bg-red-600 hover:bg-red-700 shadow-md text-white font-bold py-3 px-6 rounded-md uppercase text-sm sm:text-base w-full transition-all active:scale-95 cursor-pointer"
                 >
                   Yes, I am 18+
                 </button>
@@ -86,7 +86,7 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
   
   return (
     <div className="flex flex-col h-full shadow-2xl rounded-xl" id="order">
-      <h3 className="font-oswald text-2xl font-bold bg-green-800 text-white p-3 text-center uppercase tracking-wider rounded-t-xl">{title}</h3>
+      <h3 className="font-oswald text-xl font-bold bg-green-800 text-white p-3 text-center uppercase tracking-wider rounded-t-xl">{title}</h3>
       <div className="border-[5px] border-t-0 border-green-800 p-4 sm:p-5 rounded-b-xl bg-white relative flex flex-col flex-grow">
         <img 
           src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${imageName}.jpeg`} 
@@ -94,12 +94,12 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
           loading="lazy"
           className="w-full h-auto block border-4 border-green-600 shadow-md mb-4 bg-gray-200"
         />
-        <div className="text-gray-800 mb-6 text-[1.1rem] leading-relaxed space-y-4 font-medium px-1 flex-grow">
+        <div className="text-gray-800 mb-6 text-sm sm:text-base leading-relaxed space-y-4 font-medium px-1 flex-grow">
            {children}
         </div>
         
         <div className="mt-auto">
-          <div className="text-center font-black text-3xl text-red-700 mb-3 ml-2 mt-4 animate-bounce">
+          <div className="text-center font-black text-2xl text-red-700 mb-3 ml-2 mt-4 animate-bounce">
             &gt;&gt;&gt;
           </div>
           
@@ -107,10 +107,10 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
             href={`https://wa.me/2340000000000?text=${encodeURIComponent(orderMessage)}`} 
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full bg-gradient-to-b from-green-600 to-green-800 rounded-xl py-4 px-2 shadow-[inset_0_-4px_0_rgba(0,0,0,0.3)] transform transition hover:scale-[1.02] active:scale-95 text-center border border-green-900 box-border"
+            className="block w-full bg-gradient-to-b from-green-600 to-green-800 rounded-xl py-3 px-2 shadow-[inset_0_-4px_0_rgba(0,0,0,0.3)] transform transition hover:scale-[1.02] active:scale-95 text-center border border-green-900 box-border"
           >
-             <div className="font-oswald text-2xl sm:text-3xl uppercase tracking-wider font-bold text-white shadow-sm leading-tight">GET {shortName}</div>
-             <div className="text-yellow-300 font-bold italic text-xs sm:text-sm mt-1">{ctaSubtext}</div>
+             <div className="font-oswald text-xl sm:text-2xl uppercase tracking-wider font-bold text-white shadow-sm leading-tight">GET {shortName}</div>
+             <div className="text-yellow-300 font-bold italic text-xs mt-1">{ctaSubtext}</div>
           </a>
         </div>
       </div>
@@ -121,8 +121,8 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
 function SectionHeader({ subtitle, title }: { subtitle: string, title: string }) {
   return (
     <div className="my-10 text-center">
-      <h2 className="text-red-700 font-bold uppercase tracking-widest text-sm mb-1">{subtitle}</h2>
-      <h3 className="font-oswald text-[2.5rem] leading-tight font-black uppercase text-gray-900 border-b-4 border-green-700 inline-block pb-1">
+      <h2 className="text-red-700 font-bold uppercase tracking-widest text-xs sm:text-sm mb-1">{subtitle}</h2>
+      <h3 className="font-oswald text-2xl sm:text-3xl lg:text-4xl leading-tight font-black uppercase text-gray-900 border-b-4 border-green-700 inline-block pb-1">
         {title}
       </h3>
     </div>
@@ -133,7 +133,7 @@ function YesNoTrap() {
   return (
     <div className="my-14 p-4 max-w-3xl mx-auto">
       <div className="border-4 border-dashed border-yellow-400 p-6 bg-white mb-6 shadow-xl">
-        <p className="font-bold text-gray-900 text-xl sm:text-2xl leading-snug text-center">
+        <p className="font-bold text-gray-900 text-lg sm:text-xl leading-snug text-center">
           Before you order, Would you like to see more testimonials from men who have also used these products?
         </p>
       </div>
@@ -143,19 +143,19 @@ function YesNoTrap() {
           href="https://wa.me/2340000000000?text=Hello%20Maza%20Kuta,%20I%20want%20to%20see%20more%20testimonials."
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#15803d] hover:bg-[#16a34a] text-white font-oswald text-xl sm:text-2xl uppercase tracking-wider font-bold py-5 px-6 shadow-lg text-center rounded-xl border border-green-800 transition transform hover:scale-[1.02]"
+          className="bg-[#15803d] hover:bg-[#16a34a] text-white font-oswald text-lg sm:text-xl uppercase tracking-wider font-bold py-4 px-6 shadow-lg text-center rounded-xl border border-green-800 transition transform hover:scale-[1.02]"
         >
           Yes, Let Me See!
         </a>
         <a 
           href="#order"
-          className="bg-green-900 hover:bg-green-950 text-white font-oswald text-lg sm:text-xl uppercase tracking-wider font-bold py-4 px-6 shadow-lg text-center rounded-xl border border-green-950 transition hover:bg-green-950"
+          className="bg-green-900 hover:bg-green-950 text-white font-oswald text-base sm:text-lg uppercase tracking-wider font-bold py-3 px-6 shadow-lg text-center rounded-xl border border-green-950 transition hover:bg-green-950"
         >
           No, I Just Want To Proceed To Order!
         </a>
       </div>
       
-      <p className="mt-8 text-gray-800 font-bold sm:text-lg text-base leading-snug italic text-center bg-gray-200 p-4 rounded-lg">
+      <p className="mt-8 text-gray-800 font-bold text-sm sm:text-base leading-snug italic text-center bg-gray-200 p-4 rounded-lg">
         Many men have achieved amazing, life-changing results. 
       </p>
     </div>
@@ -297,13 +297,13 @@ export function Phases() {
           orderMessage="Hello Maza Kuta, I want to order The Enlargement Infusion VIP Package."
           ctaSubtext="*The absolute premium flagship package*"
         >
-          <p className="text-xl font-bold text-red-700 mb-2 border-b-2 border-red-700 inline-block">
+          <p className="text-lg font-bold text-red-700 mb-2 border-b-2 border-red-700 inline-block">
             THE FLAGSHIP PACKAGE
           </p>
           <p>
             The absolute premium VIP package. We hold nothing back. You get the potent Infusion liquid, Tissue Builder, Energy God, and the maximum-strength Cream all combined.
           </p>
-          <p className="bg-yellow-100 p-4 font-black text-gray-900 italic rounded text-lg border-l-4 border-yellow-500">
+          <p className="bg-yellow-100 p-4 font-black text-gray-900 italic rounded text-base border-l-4 border-yellow-500">
             This is for the man who wants maximum, permanent scaling. Total domination, guaranteed.
           </p>
         </ProductCard>
