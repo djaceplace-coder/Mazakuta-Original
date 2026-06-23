@@ -1,4 +1,5 @@
 import { ReactNode, useState } from 'react';
+import { getImageUrl } from '../imageMap';
 
 interface ProductCardProps {
   title: string;
@@ -32,23 +33,21 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
             <div className="flex-1 relative w-full">
               <div className="absolute top-3 left-3 bg-red-600 text-white text-[0.65rem] sm:text-xs font-black uppercase px-2 py-1 flex items-center justify-center rounded shadow-md z-10 border border-red-800">BEFORE</div>
               <img 
-                src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${beforeSrc}`} 
+                src={getImageUrl(beforeSrc, 'BEFORE')} 
                 alt="Before" 
                 loading="lazy"
                 decoding="async"
                 className={`w-full h-auto block bg-gray-50 rounded-md border-2 shadow-sm border-red-200 ${!isOver18 ? 'blur-2xl grayscale' : ''}`} 
-                onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x500/fee2e2/991b1b?text=BEFORE` }} 
               />
             </div>
             <div className="flex-1 relative w-full">
               <div className="absolute top-3 left-3 bg-green-600 text-white text-[0.65rem] sm:text-xs font-black uppercase px-2 py-1 flex items-center justify-center rounded shadow-md z-10 border border-green-800">AFTER</div>
               <img 
-                src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${afterSrc}`} 
+                src={getImageUrl(afterSrc, 'AFTER')} 
                 alt="After" 
                 loading="lazy"
                 decoding="async"
                 className={`w-full h-auto block bg-gray-50 rounded-md border-2 shadow-sm border-green-200 ${!isOver18 ? 'blur-2xl grayscale' : ''}`} 
-                onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x500/dcfce7/166534?text=AFTER` }} 
               />
             </div>
           </div>
@@ -89,7 +88,7 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
       <h3 className="font-oswald text-xl font-bold bg-green-800 text-white p-3 text-center uppercase tracking-wider rounded-t-xl">{title}</h3>
       <div className="border-[5px] border-t-0 border-green-800 p-4 sm:p-5 rounded-b-xl bg-white relative flex flex-col flex-grow">
         <img 
-          src={`https://raw.githubusercontent.com/djaceplace-coder/Mazakuta-Original/main/public/${imageName}.jpeg`} 
+          src={getImageUrl(imageName || '', shortName)} 
           alt={title} 
           loading="lazy"
           className="w-full h-auto block border-4 border-green-600 shadow-md mb-4 bg-gray-200"
@@ -170,7 +169,7 @@ export function Phases() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <ProductCard 
           title="Product 1: The Flusher" 
-          imageName="Flusher%20Base"
+          imageName="Flusher Base"
           orderMessage="Hello Maza Kuta, I want to order The Flusher."
           ctaSubtext="*Recommended for complete support*"
         >
@@ -184,7 +183,7 @@ export function Phases() {
 
         <ProductCard 
           title="Product 2: Anti-Wank Therapy" 
-          imageName="Anti%20wank%20therapy%20Base"
+          imageName="Anti wank therapy Base"
           orderMessage="Hello Maza Kuta, I want to order the Anti-Wank Therapy."
           ctaSubtext="*Recommended for mental & physical reset*"
         >
@@ -211,7 +210,7 @@ export function Phases() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <ProductCard 
           title="Product 3: Rock Steady" 
-          imageName="Rock%20Steady%20Base"
+          imageName="Rock Steady Base"
           orderMessage="Hello Maza Kuta, I want to order Rock Steady."
           ctaSubtext="*Recommended for reliable erection recovery*"
         >
@@ -225,7 +224,7 @@ export function Phases() {
         
         <ProductCard 
           title="Product 4: Volumizer" 
-          imageName="Volumizer%20Base"
+          imageName="Volumizer Base"
           orderMessage="Hello Maza Kuta, I want to order the Volumizer."
           ctaSubtext="*Recommended to increase sperm volume and count*"
         >
@@ -239,7 +238,7 @@ export function Phases() {
 
         <ProductCard 
           title="Product 5: Everlast" 
-          imageName="Everlast%20Base1"
+          imageName="Everlast Base1"
           orderMessage="Hello Maza Kuta, I want to order Everlast."
           ctaSubtext="*Liquid formula for immediate stamina*"
         >
@@ -253,7 +252,7 @@ export function Phases() {
 
         <ProductCard 
           title="Product 6: Extra Hours" 
-          imageName="Extra%20Hours%20Base"
+          imageName="Extra Hours Base"
           orderMessage="Hello Maza Kuta, I want to order Extra Hours."
           ctaSubtext="*Powder/Tea to extend the ejaculation threshold*"
         >
@@ -279,7 +278,7 @@ export function Phases() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
         <ProductCard 
           title="Product 7: Enlargement Therapy" 
-          imageName="Enlargement%20Therapy%20Base"
+          imageName="Enlargement Therapy Base"
           orderMessage="Hello Maza Kuta, I want to order the Enlargement Therapy."
           ctaSubtext="*Tissue Builder Max + Energy God + Cream*"
         >
