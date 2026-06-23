@@ -37,6 +37,7 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
                 alt="Before" 
                 loading="lazy"
                 decoding="async"
+                referrerPolicy="no-referrer"
                 className={`w-full h-auto block bg-gray-50 rounded-md border-2 shadow-sm border-red-200 ${!isOver18 ? 'blur-2xl grayscale' : ''}`} 
               />
             </div>
@@ -47,6 +48,7 @@ function BeforeAfterTestimonial({ beforeSrc, afterSrc, caption }: { beforeSrc: s
                 alt="After" 
                 loading="lazy"
                 decoding="async"
+                referrerPolicy="no-referrer"
                 className={`w-full h-auto block bg-gray-50 rounded-md border-2 shadow-sm border-green-200 ${!isOver18 ? 'blur-2xl grayscale' : ''}`} 
               />
             </div>
@@ -84,14 +86,15 @@ function ProductCard({ title, imageName, children, orderMessage, ctaSubtext }: P
   const shortName = title.includes(':') ? title.split(':')[1].trim() : title;
   
   return (
-    <div className="flex flex-col h-full shadow-2xl rounded-xl" id="order">
+    <div className="flex flex-col h-full shadow-2xl rounded-xl">
       <h3 className="font-oswald text-xl font-bold bg-green-800 text-white p-3 text-center uppercase tracking-wider rounded-t-xl">{title}</h3>
       <div className="border-[5px] border-t-0 border-green-800 p-4 sm:p-5 rounded-b-xl bg-white relative flex flex-col flex-grow">
         <img 
           src={getImageUrl(imageName || '', shortName)} 
           alt={title} 
           loading="lazy"
-          className="w-full h-auto block border-4 border-green-600 shadow-md mb-4 bg-gray-200"
+          referrerPolicy="no-referrer"
+          className="w-full aspect-square object-cover block border-4 border-green-600 shadow-md mb-4 bg-gray-200"
         />
         <div className="text-gray-800 mb-6 text-sm sm:text-base leading-relaxed space-y-4 font-medium px-1 flex-grow">
            {children}
@@ -273,7 +276,9 @@ export function Phases() {
 
       <YesNoTrap />
       
-      <SectionHeader subtitle="Step 3" title="Phase 3: Ultimate Expansion" />
+      <div id="order">
+        <SectionHeader subtitle="Step 3" title="Phase 3: Ultimate Expansion" />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
         <ProductCard 
